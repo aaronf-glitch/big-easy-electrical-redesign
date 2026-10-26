@@ -634,3 +634,16 @@ a.pg.nav[rel="prev"] svg.i{transform:rotate(180deg)}
 .infolist li{flex:0 1 calc(50% - 8px)}
 .cityinfo.nearby{padding:72px 0}
 @media (max-width:1023px){.infolist li{flex-basis:100%}}
+
+/* Nearby Suburbs: full-width equal cards (Ron 2026-10-26: pills left the right half empty) */
+.nearlist{display:grid;grid-template-columns:repeat(var(--n,3),1fr);gap:18px}
+.nearlist li{display:flex}
+.nearlist a{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-height:0;padding:26px 26px 24px;border-radius:22px;background:var(--navy) var(--circuit-navy);color:#fff;text-decoration:none}
+.nearlist a .ic{width:44px;height:44px;border-radius:14px;background:var(--sun);color:var(--navy);display:grid;place-items:center}
+.nearlist a .ic svg.i{width:22px;height:22px;color:var(--navy)}
+.nearlist a b{font:800 22px/1.2 "Plus Jakarta Sans",sans-serif}
+.nearlist a .more{display:inline-flex;align-items:center;gap:8px;color:var(--sun);font-weight:700;font-size:15.5px;margin-top:auto}
+.nearlist a .more svg.i{width:18px;height:18px;color:var(--sun)}
+@media (hover:hover) and (pointer:fine){.nearlist a:hover{background-color:#1A3A63}}
+@media (max-width:1023px){.nearlist{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.nearlist{grid-template-columns:1fr}}
