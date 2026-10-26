@@ -591,3 +591,46 @@ a.pg.nav[rel="prev"] svg.i{transform:rotate(180deg)}
 .signs.aboutus .photo img{object-position:30% 50%}
 .signs.aboutus .chips{margin:24px 0 28px}
 .signs.aboutus .chips li{border-color:#F2DFA6}
+
+/* ================= ABOUT THE AREA (city pages: sourced facts about the city itself) ================= */
+.area{background:#fff;padding:96px 0}
+.area .head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;align-items:end;margin-bottom:40px}
+.area .head .answer{margin:0}
+.area .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.area .fact{background:#F4F8FD;border:1px solid #DCE6F2;border-radius:24px;padding:28px 28px 30px}
+.area .fact .pin{display:block;width:34px;height:4px;border-radius:4px;background:var(--sun);margin-bottom:18px}
+.area .fact h3{font:800 20px/1.25 "Plus Jakarta Sans",sans-serif;color:var(--navy);margin:0 0 10px}
+.area .fact p{margin:0;color:var(--navy-2);font-size:16.5px;line-height:1.65}
+.area .ctas{margin-top:32px}
+@media (max-width:1023px){
+  .area{padding:56px 0}
+  .area .head{grid-template-columns:1fr;gap:18px}
+  .area .facts{grid-template-columns:1fr}
+}
+
+/* ================= LOCATION STANDARD BLOCKS (Things To Do, Nearby Suburbs, Fun Facts, Public Transportation) ================= */
+.cityinfo{background:#fff;padding:88px 0}
+.cityinfo.cream{background:var(--circuit-soft),linear-gradient(135deg,#FFF6DA 0%,#FFF1CC 100%)}
+.cityinfo .head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;align-items:end;margin-bottom:36px}
+.cityinfo .head .answer{margin:0}
+.infolist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.infolist li{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid #DCE6F2;border-radius:20px;padding:20px 22px;box-shadow:0 14px 26px -22px rgba(15,39,71,.35)}
+.cityinfo:not(.cream) .infolist li{background:#F4F8FD}
+.infolist .ic{width:40px;height:40px;border-radius:12px;background:var(--sun);color:var(--navy);display:grid;place-items:center;flex:none}
+.infolist .ic svg.i{width:20px;height:20px}
+.infolist li > span:last-child{color:var(--navy-2);font-size:16.5px;line-height:1.6}
+.infolist b{color:var(--navy);font-weight:800}
+.nearlist{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+.nearlist a{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px;border-radius:999px;background:var(--navy);color:#fff;text-decoration:none;font-weight:700}
+.nearlist a svg.i{width:18px;height:18px;color:var(--sun)}
+@media (hover:hover) and (pointer:fine){.nearlist a:hover{background:#1A3A63}}
+@media (max-width:1023px){
+  .cityinfo{padding:56px 0}
+  .cityinfo .head{grid-template-columns:1fr;gap:18px}
+  .infolist{grid-template-columns:1fr}
+}
+/* odd item counts: centre the last row with flex, never strand it on the left (L-145) */
+.infolist{display:flex;flex-wrap:wrap;justify-content:center}
+.infolist li{flex:0 1 calc(50% - 8px)}
+.cityinfo.nearby{padding:72px 0}
+@media (max-width:1023px){.infolist li{flex-basis:100%}}
