@@ -445,3 +445,19 @@ footer ul{gap:0}
 footer ul a:not(.btn){display:inline-flex;align-items:center;min-height:44px;min-width:44px}
 footer .hours li{min-height:44px;align-items:center;padding-bottom:0}
 .sidetab{padding:22px 15px}
+
+/* ================= FULL-BLEED PHOTO SECTION, dead space removed (Ron 2026-10-26) =================
+   Wide card (two text columns under a full-width H2) on the side away from the photo's subject; tighter padding. */
+.about{min-height:0;padding:80px 0}
+.about .acard{max-width:none;width:min(860px,62%);padding:40px 44px 38px}
+.about.flip .wrap{justify-content:flex-start}
+.about .acols{display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;margin-top:18px;align-items:start}
+.about .acols .answer{margin:0;font-size:17.5px}
+.about .acols .more{margin:0 0 12px;font-size:16.5px}
+.about .acols .more:last-child{margin-bottom:0}
+.about .acols .chips{margin:4px 0 0}
+.about .acard > .ctas{margin-top:26px}
+@media (max-width:1023px){
+  .about .acard{width:auto;padding:28px 22px}
+  .about .acols{grid-template-columns:1fr;gap:12px}
+}
