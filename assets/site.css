@@ -542,3 +542,46 @@ footer .hours li{min-height:44px;align-items:center;padding-bottom:0}
   .reviews .head{grid-template-columns:1fr;gap:20px}
   .rgrid{grid-template-columns:1fr}
 }
+
+/* ================= STICKY NAV (Ron 2026-10-26: "walang sticky nav menu") =================
+   Past the hero's first screen the nav pins to the top as a solid navy bar. A spacer keeps the hero from jumping. */
+.navspace{display:none}
+body.stuck .navspace{display:block;height:var(--navh,96px)}
+body.stuck .hero > .nav{position:fixed;top:0;left:0;right:0;z-index:70;background:rgba(10,28,54,.97);box-shadow:0 12px 30px -16px rgba(0,0,0,.6);animation:navIn .24s cubic-bezier(.2,.75,.2,1)}
+body.stuck .hero > .nav .wrap{min-height:76px}
+body.stuck .hero > .nav .logo{padding:6px 12px;border-radius:14px}
+body.stuck .hero > .nav .logo img{width:64px}
+@keyframes navIn{from{transform:translateY(-100%)}}
+@media (max-width:1023px){body.stuck .hero > .nav .wrap{min-height:64px} body.stuck .hero > .nav .logo img{width:56px}}
+@media (prefers-reduced-motion:reduce){body.stuck .hero > .nav{animation:none}}
+
+/* ================= POPUP ESTIMATE FORM (Ron's standing call: side tab + popup with the client's own form) ================= */
+.bee-modal{border:0;padding:0;border-radius:28px;width:min(560px,calc(100vw - 24px));max-height:calc(100vh - 32px);background:#fff;color:var(--navy);box-shadow:0 40px 80px -30px rgba(0,0,0,.6);overflow:hidden}
+.bee-modal::backdrop{background:rgba(10,28,54,.72)}
+.bee-modal[open]{animation:modalIn .22s cubic-bezier(.2,.75,.2,1)}
+@keyframes modalIn{from{opacity:0;transform:translateY(14px) scale(.98)}}
+.bee-modal .mhead{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 18px 10px 24px;background:var(--navy) var(--circuit-navy);color:#fff}
+.bee-modal .mt{font:800 21px/1.2 "Plus Jakarta Sans",sans-serif;margin:0}
+.bee-modal .ms{margin:4px 0 0;color:#C9D5E4;font-size:15px}
+.bee-modal .mx{flex:none;width:44px;height:44px;border-radius:999px;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer}
+.bee-modal .mx svg.i{width:20px;height:20px}
+.bee-modal .mbody{padding:8px 8px 4px}
+#bee-popup-form{width:100%;height:min(620px,calc(100vh - 160px)) !important;border:0;display:block;overflow:auto !important}
+.bee-modal .mcall{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px 16px;font-weight:600;color:var(--navy-2);font-size:15.5px}
+.bee-modal .mcall a{color:var(--navy);font-weight:800;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+body.modal-open{overflow:hidden}
+@media (prefers-reduced-motion:reduce){.bee-modal[open]{animation:none}}
+
+/* ================= BLOG INDEX: posts + sidebar + pagination ================= */
+.bloglay{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:48px;align-items:start}
+.pager{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:40px}
+.pg{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:48px;min-height:48px;padding:0 16px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--navy);font-weight:700;text-decoration:none}
+.pg.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.pg.nav svg.i{width:18px;height:18px}
+a.pg.nav[rel="prev"] svg.i{transform:rotate(180deg)}
+@media (hover:hover) and (pointer:fine){a.pg:hover{border-color:var(--sun);background:#FFF8E3}}
+/* post FAQ accordions use the site FAQ component inside the article */
+.prose .pqa{margin:6px 0 30px}
+.prose .pqa summary h3{margin:0;font-size:18px;line-height:1.35}
+.prose .pqa details p{margin:0 0 20px;font-size:16.5px}
+@media (max-width:1023px){.bloglay{grid-template-columns:1fr;gap:36px}}

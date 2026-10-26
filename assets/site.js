@@ -32,6 +32,42 @@
     if (mnav) { if (!mnav.hidden) setMenu(false); }
     document.querySelectorAll('.mainnav .dd.open').forEach(function(o){ o.classList.remove('open'); });
   });
+  /* sticky nav: pin the nav once the visitor scrolls past the first screen of the hero */
+  var navEl=document.querySelector('.hero > .nav');
+  if (navEl) {
+    var spacer=document.createElement('div'); spacer.className='navspace'; navEl.parentNode.insertBefore(spacer, navEl);
+    var stuck=false;
+    var onScroll=function(){
+      var want=window.scrollY > 420;
+      if (want===stuck) return;
+      if (want) document.documentElement.style.setProperty('--navh', navEl.offsetHeight+'px');
+      stuck=want; document.body.classList.toggle('stuck', want);
+    };
+    window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  }
+  /* popup estimate form: the client's own LeadConnector form, built on first open so it never loads twice */
+  var modal=document.getElementById('bee-modal');
+  if (modal) {
+    var lastFocus=null;
+    var openModal=function(e){
+      if (!modal.showModal) return;
+      if (e) e.preventDefault();
+      var body=modal.querySelector('.mbody');
+      if (!body.querySelector('iframe')) {
+        var f=document.createElement('iframe');
+        f.id='bee-popup-form'; f.title='Get Your Free Estimate'; f.setAttribute('scrolling','yes');
+        f.src='https://api.leadconnectorhq.com/widget/form/Pr6s4ptPugYTZ0iryjH3';
+        body.appendChild(f);
+      }
+      lastFocus=document.activeElement; modal.showModal(); document.body.classList.add('modal-open');
+      modal.querySelector('.mx').focus();
+    };
+    var closeModal=function(){ modal.close(); };
+    modal.addEventListener('close', function(){ document.body.classList.remove('modal-open'); if (lastFocus) lastFocus.focus(); });
+    modal.querySelector('.mx').addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e){ if (e.target===modal) closeModal(); });
+    document.querySelectorAll('[data-popup]').forEach(function(b){ b.addEventListener('click', function(e){ if (mnav) { if (!mnav.hidden) setMenu(false); } openModal(e); }); });
+  }
   if (reduce || !('IntersectionObserver' in window)) return;
   var vh=window.innerHeight;
   function done(el,cls){ el.classList.remove(cls); el.style.removeProperty('--d'); }
