@@ -446,18 +446,31 @@ footer ul a:not(.btn){display:inline-flex;align-items:center;min-height:44px;min
 footer .hours li{min-height:44px;align-items:center;padding-bottom:0}
 .sidetab{padding:22px 15px}
 
-/* ================= FULL-BLEED PHOTO SECTION, dead space removed (Ron 2026-10-26) =================
-   Wide card (two text columns under a full-width H2) on the side away from the photo's subject; tighter padding. */
-.about{min-height:0;padding:80px 0}
-.about .acard{max-width:none;width:min(860px,62%);padding:40px 44px 38px}
-.about.flip .wrap{justify-content:flex-start}
-.about .acols{display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;margin-top:18px;align-items:start}
-.about .acols .answer{margin:0;font-size:17.5px}
-.about .acols .more{margin:0 0 12px;font-size:16.5px}
-.about .acols .more:last-child{margin-bottom:0}
-.about .acols .chips{margin:4px 0 0}
-.about .acard > .ctas{margin-top:26px}
+/* ================= FULL-BLEED PHOTO SECTION (Ron 2026-10-26, second pass): text directly on the photo =================
+   No card, no overlay or mask (no-mask rule outside the hero). Text sits on the photo's plain side, the subject on the
+   other side via object-position. Light photos take navy text with a soft white halo; the dark photo takes white text. */
+.about.bleed{min-height:640px;padding:96px 0;display:flex;align-items:center}
+.about.bleed .wrap{justify-content:flex-start}
+.about.bleed.t-right .wrap{justify-content:flex-end}
+.about.bleed .atext{width:min(560px,44%)}
+.about.bleed h2{font-size:clamp(30px,2.8vw,42px)}
+.about.bleed .answer{font-size:18px;margin-top:16px}
+.about.bleed .more{margin:14px 0 0;font-size:17px;line-height:1.65}
+.about.bleed .ctas{margin-top:28px}
+.about.bleed .chips{margin:20px 0 0}
+.about.bleed.light h2,.about.bleed.light .answer,.about.bleed.light .more{color:var(--navy);text-shadow:0 0 22px rgba(255,255,255,.95),0 0 8px rgba(255,255,255,.9),0 1px 1px rgba(255,255,255,.9)}
+.about.bleed.light .answer,.about.bleed.light .more{color:#1E314D}
+.about.bleed.light .eyebrow{color:var(--blue-d);text-shadow:0 0 12px rgba(255,255,255,.95)}
+.about.bleed.dark h2,.about.bleed.dark .answer,.about.bleed.dark .more{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.75),0 1px 3px rgba(0,0,0,.8)}
+.about.bleed.dark .eyebrow{color:var(--sun);text-shadow:0 1px 8px rgba(0,0,0,.8)}
 @media (max-width:1023px){
-  .about .acard{width:auto;padding:28px 22px}
-  .about .acols{grid-template-columns:1fr;gap:12px}
+  .about.bleed{display:block;min-height:0;padding:0 0 48px;background:#F4F8FD}
+  .about.bleed > .bgimg{position:relative;height:300px}
+  .about.bleed .wrap{display:block;margin-top:0}
+  .about.bleed .atext{width:auto;padding-top:32px}
+  .about.bleed.light h2,.about.bleed.light .answer,.about.bleed.light .more,.about.bleed.dark h2,.about.bleed.dark .answer,.about.bleed.dark .more{color:var(--navy);text-shadow:none}
+  .about.bleed .answer,.about.bleed .more{color:#2A3B55}
+  .about.bleed.dark .eyebrow{color:var(--blue-d);text-shadow:none}
+  .about.bleed.dark .btn-glass{color:var(--navy);border-color:var(--navy);background:transparent}
 }
+.about.bleed .chips li{border-color:var(--line);box-shadow:0 8px 18px -12px rgba(15,39,71,.45)}
