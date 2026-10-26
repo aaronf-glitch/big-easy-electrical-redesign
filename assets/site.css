@@ -585,3 +585,9 @@ a.pg.nav[rel="prev"] svg.i{transform:rotate(180deg)}
 .prose .pqa summary h3{margin:0;font-size:18px;line-height:1.35}
 .prose .pqa details p{margin:0 0 20px;font-size:16.5px}
 @media (max-width:1023px){.bloglay{grid-template-columns:1fr;gap:36px}}
+
+/* ================= SERVICE-PAGE ABOUT (photo left, text right; warm ground so it reads apart from the signs block) ================= */
+.signs.aboutus{background:#fff}
+.signs.aboutus .photo img{object-position:30% 50%}
+.signs.aboutus .chips{margin:24px 0 28px}
+.signs.aboutus .chips li{border-color:#F2DFA6}
